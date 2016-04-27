@@ -17,4 +17,7 @@ return [
     'GET,HEAD /status/<id>' => '/status/view',
     'POST /status' => '/status/create',
     'GET,HEAD /status' => '/status/index',
+
+     'GET /postinfos' => '/postinfo/views',
+     'GET,HEAD /postinfo/<id>' => '/postinfo/view',
 ];
