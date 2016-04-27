@@ -6,11 +6,6 @@ $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
-    'modules' => [
-        'v1' => [
-            'class' => 'app\modules\v1\model',
-        ],
-    ],
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -20,7 +15,6 @@ $config = [
             ]
         ],
         'cache' => [
-            //'class' => 'yii\caching\FileCache',
              'class' => 'yii\redis\Cache',
         ],
                 'redis' => [

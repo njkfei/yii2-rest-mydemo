@@ -6,15 +6,15 @@ use Yii;
 use yii\rest\ActiveController;
 use yii\web\NotFoundHttpException;
 use yii\data\ActiveDataProvider;
-use app\utils\Validator;
+use app\components\helper\ApiCheck;
+
 
 /**
  * PostinfoController implements the CRUD actions for Postinfo model.
  */
 class PostinfoController extends ActiveController
 {
-    public $modelClass = 'app\models\User';
-    public $validator = 'app\utils\Validator';
+    public $modelClass = 'app\models\Postinfo';
     public $serializer = [
         'class' => 'yii\rest\Serializer',
         'collectionEnvelope' => 'items',
@@ -46,11 +46,13 @@ class PostinfoController extends ActiveController
         }
 
     public function actionView($id)
-    {
-               if($validator->valid()){
-                return "not valid";
+    {           $request = Yii::$app->getRequest();
+               // var_dump($_REQUEST);
+
+               if(ApiCheck::valid($_REQUEST) === false){
+                    return "not valid";
                }
-               Yii::$app->getRequest()->getQueryParam('key');
+
                $theme = Yii::$app->cache->get("theme".$id);
 
                if($theme==false){
