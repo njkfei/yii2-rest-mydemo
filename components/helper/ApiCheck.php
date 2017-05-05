@@ -24,6 +24,6 @@ class ApiCheck
              echo "$key = $val\n";
          }
 
-         return false;
+         return true;
      }
 }
